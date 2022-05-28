@@ -2,7 +2,7 @@
   "name": "shopping_store_squareshift",
   "version": "0.1.0",
   "private": true,
-  "homepage ": "https://manipandian.github.io/shopping_store_squareshift",
+  "homepage ": "https://manipandian.github.io/shopping-store-squareshift",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
