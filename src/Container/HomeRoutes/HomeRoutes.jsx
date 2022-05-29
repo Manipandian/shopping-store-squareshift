@@ -14,6 +14,7 @@ const HomeRoutes = () => {
       <Route path={ROUTE_PATH.CATEGORY} element={<Category />} />
       <Route path={ROUTE_PATH.PRODUCTDETAILS} element={<ProductDetails />} />
       <Route path={ROUTE_PATH.CART} element={<Cart />} />
+      <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
 };

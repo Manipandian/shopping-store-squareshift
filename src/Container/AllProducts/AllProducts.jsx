@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -16,7 +16,7 @@ const AllProducts = () => {
   const { productsList, cartList } = useSelector(productsState);
   useEffect(() => {
     dispatch(updateProductsList([]));
-    productCategory === 'all'
+    !Boolean(productCategory) || productCategory === 'all'
       ? dispatch(getProductList())
       : dispatch(getProductsForCategory(productCategory));
   }, [dispatch]);

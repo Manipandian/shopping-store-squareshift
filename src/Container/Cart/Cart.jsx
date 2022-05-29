@@ -2,6 +2,8 @@ import { Box, Grid, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { productsState } from '../../Store/Slices/productSlice';
+import CartProductCard from '../../Component/CartProductCard/CartProductCard';
+import OrderSummaryCard from '../../Component/OrderSummaryCard/OrderSummaryCard';
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -10,11 +12,13 @@ const Cart = () => {
   return (
     <Box
       p={2}
+      pl={4}
+      pr={4}
       sx={{
         backgroundColor: '#f5d5e7',
       }}
     >
-      <Grid container spacing={2} justifyContent="space-between">
+      <Grid container spacing={3} justifyContent="space-between">
         <Grid item>
           <Box
             sx={{
@@ -27,10 +31,38 @@ const Cart = () => {
           <Button onClick={backToAllSelection}>Continue Shopping</Button>
         </Grid>
       </Grid>
-      <Grid>
-        <Box id="item-list"></Box>
-        <Box id="order-summary"></Box>
-        <Box id="checkout-form"></Box>
+      <Grid container spacing={2} justifyContent="space-evenly">
+        <Grid item xs={7}>
+          {cartList.map((cart) => {
+            return (
+              <Box
+                id="item-list"
+                p={2}
+                sx={{
+                  height: '200px',
+                  width: '100%',
+                }}
+              >
+                <CartProductCard product={cart} />
+              </Box>
+            );
+          })}
+        </Grid>
+        <Grid item xs={4}>
+          <Box
+            id="order-summary"
+            p={2}
+            sx={{
+              height: '200px',
+              width: '100%',
+            }}
+          >
+            <OrderSummaryCard cartList={cartList} />
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box id="checkout-form"></Box>
+        </Grid>
       </Grid>
     </Box>
   );
