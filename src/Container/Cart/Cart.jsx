@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { productsState } from '../../Store/Slices/productSlice';
 import CartProductCard from '../../Component/CartProductCard/CartProductCard';
 import OrderSummaryCard from '../../Component/OrderSummaryCard/OrderSummaryCard';
+import CartCheckout from '../../Component/CartCheckout/CartCheckout';
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -60,8 +61,15 @@ const Cart = () => {
             <OrderSummaryCard cartList={cartList} />
           </Box>
         </Grid>
-        <Grid item xs={12}>
-          <Box id="checkout-form"></Box>
+        <Grid item xs={11}>
+          <Box
+            id="checkout-form"
+            sx={{
+              height: '200px',
+            }}
+          >
+            <CartCheckout />
+          </Box>
         </Grid>
       </Grid>
     </Box>

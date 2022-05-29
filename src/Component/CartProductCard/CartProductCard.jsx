@@ -23,11 +23,11 @@ const CartProductCard = ({ product }) => {
             {` ${product.id}`}
           </Box>
           <Box>
-            <strong>Qty</strong>
+            <strong>Qty:</strong>
             {` ${product.count}`}
           </Box>
           <Box>
-            <strong>Price</strong>
+            <strong>Price:</strong>
             {` ${product.price}`}
           </Box>
         </Grid>

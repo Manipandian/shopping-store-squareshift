@@ -1,6 +1,13 @@
 import { Card, Grid, Box } from '@mui/material';
 
 const OrderSummaryCard = ({ cartList }) => {
+  let subTotal = 0;
+  const shippingCost = 5.9;
+  const total = subTotal + shippingCost;
+  cartList.forEach((prod) => {
+    const prodCost = Number(prod.price) * Number(prod.count);
+    subTotal = subTotal + prodCost;
+  });
   return (
     <Card sx={{ width: '100%', height: '100%', padding: '10px' }}>
       <Box p={2}>
@@ -13,7 +20,7 @@ const OrderSummaryCard = ({ cartList }) => {
             Subtotal
           </Grid>
           <Grid item xs={6}>
-            32
+            {`$ ${subTotal}`}
           </Grid>
         </Grid>
       </Box>
@@ -23,7 +30,7 @@ const OrderSummaryCard = ({ cartList }) => {
             Estimated Shipping
           </Grid>
           <Grid item xs={6}>
-            32
+            {`$ ${shippingCost}`}
           </Grid>
         </Grid>
       </Box>
@@ -34,7 +41,7 @@ const OrderSummaryCard = ({ cartList }) => {
             Total
           </Grid>
           <Grid item xs={6}>
-            32
+            {`$ ${total}`}
           </Grid>
         </Grid>
       </Box>
