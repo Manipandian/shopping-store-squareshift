@@ -7,30 +7,16 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-const pages = ['Home', 'All Products', 'Category'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ handleMenuSelection, productTabs, userTabs }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -41,13 +27,11 @@ const ResponsiveAppBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              // letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -79,13 +63,13 @@ const ResponsiveAppBar = () => {
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              onClose={() => setAnchorElNav(null)}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {Object.values(productTabs).map((page) => (
+                <MenuItem key={page} onClick={() => handleMenuSelection(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -110,19 +94,26 @@ const ResponsiveAppBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {Object.values(productTabs).map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleMenuSelection(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-          </IconButton>
+          <Box pr={2}>
+            <IconButton onClick={() => handleMenuSelection(userTabs.CART)} sx={{ p: 0 }}>
+              <ShoppingCartOutlinedIcon color='action'/>
+            </IconButton>
+          </Box>
+          <Box>
+            <IconButton onClick={() => handleMenuSelection(userTabs.USER)} sx={{ p: 0 }}>
+              <AccountCircleOutlinedIcon color='secondary' />
+            </IconButton>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

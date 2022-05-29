@@ -3,12 +3,18 @@ import { Provider } from 'react-redux';
 import MainHeader from './Container/MainHeader/MainHeader';
 import store from './Store';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#2c6629',
-      darker: '#053e85',
+    },
+    secondary: {
+      main: '#382ca3',
+    },
+    action: {
+      main: '#ffffff',
     },
   },
 });
@@ -18,7 +24,9 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <MainHeader/>
+          <BrowserRouter>
+            <MainHeader />
+          </BrowserRouter>
         </ThemeProvider>
       </Provider>
     </div>
