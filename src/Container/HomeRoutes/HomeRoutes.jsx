@@ -8,7 +8,6 @@ import Cart from '../Cart/Cart';
 const HomeRoutes = () => {
   return (
     <Routes>
-      {/* <Route path='/' render={() => <Navigate  to={ROUTE_PATH.HOME}/>}></Route> */}
       <Route path={ROUTE_PATH.HOME} element={<AllProducts />} />
       <Route path={ROUTE_PATH.PRODUCTS} element={<AllProducts />} />
       <Route path={ROUTE_PATH.CATEGORY} element={<Category />} />

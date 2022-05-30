@@ -18,8 +18,7 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(updateSelectedProduct({}));
     dispatch(getProductDetails(productId));
-  }, [dispatch]);
-  console.log('product data', selectedProductData);
+  }, [dispatch, productId]);
 
   const addToCartClick = () => {
     //Needs to implement this logic while doing api integration

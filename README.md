@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# Getting Started with Shopping Store Applocation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+UI library - React js.
+State Management - Redux-Toolkit.
+Style Library - Material UI.
+Routing - react-router-dome.
+Testing - Jest, Enzyme
+
+## Application Link
+
+Netlify - https://transcendent-bunny-277317.netlify.app/
 
 ### `npm start`
 

@@ -62,12 +62,7 @@ const Cart = () => {
           </Box>
         </Grid>
         <Grid item xs={11}>
-          <Box
-            id="checkout-form"
-            sx={{
-              height: '200px',
-            }}
-          >
+          <Box id="checkout-form">
             <CartCheckout />
           </Box>
         </Grid>

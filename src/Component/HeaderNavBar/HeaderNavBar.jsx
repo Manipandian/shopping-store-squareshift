@@ -1,18 +1,26 @@
 import { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {
+  AppBar,
+  Box,
+  Badge,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Button,
+  MenuItem,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-const ResponsiveAppBar = ({ handleMenuSelection, productTabs, userTabs }) => {
+const ResponsiveAppBar = ({
+  handleMenuSelection,
+  productTabs,
+  userTabs,
+  cartCount,
+}) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -105,13 +113,21 @@ const ResponsiveAppBar = ({ handleMenuSelection, productTabs, userTabs }) => {
             ))}
           </Box>
           <Box pr={2}>
-            <IconButton onClick={() => handleMenuSelection(userTabs.CART)} sx={{ p: 0 }}>
-              <ShoppingCartOutlinedIcon color='action'/>
+            <IconButton
+              onClick={() => handleMenuSelection(userTabs.CART)}
+              sx={{ p: 0 }}
+            >
+              <Badge badgeContent={cartCount} color="secondary">
+                <ShoppingCartOutlinedIcon color="action" />
+              </Badge>
             </IconButton>
           </Box>
           <Box>
-            <IconButton onClick={() => handleMenuSelection(userTabs.USER)} sx={{ p: 0 }}>
-              <AccountCircleOutlinedIcon color='secondary' />
+            <IconButton
+              onClick={() => handleMenuSelection(userTabs.USER)}
+              sx={{ p: 0 }}
+            >
+              <AccountCircleOutlinedIcon color="secondary" />
             </IconButton>
           </Box>
         </Toolbar>
