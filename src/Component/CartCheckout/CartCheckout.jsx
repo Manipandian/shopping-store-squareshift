@@ -4,6 +4,7 @@ const CartCheckout = () => {
   return (
     <Card sx={{ width: '100%', height: '100%', padding: '10px' }}>
       <form>
+        <Box sx={{ fontSize: '20px', fontWeight: '600', pb: 1 }}>Checkout</Box>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <TextField

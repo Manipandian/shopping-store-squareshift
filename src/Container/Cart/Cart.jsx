@@ -33,22 +33,25 @@ const Cart = () => {
         </Grid>
       </Grid>
       <Grid container spacing={2} justifyContent="space-evenly">
-        <Grid item xs={7}>
-          {cartList.map((cart) => {
-            return (
-              <Box
-                id="item-list"
-                p={2}
-                sx={{
-                  height: '200px',
-                  width: '100%',
-                }}
-              >
-                <CartProductCard product={cart} />
-              </Box>
-            );
-          })}
-        </Grid>
+        {cartList.length ? (
+          <Grid item xs={7}>
+            {cartList.map((cart) => {
+              return (
+                <Box
+                  key={cart.id}
+                  id="item-list"
+                  p={2}
+                  sx={{
+                    height: '200px',
+                    width: '100%',
+                  }}
+                >
+                  <CartProductCard product={cart} />
+                </Box>
+              );
+            })}
+          </Grid>
+        ) : null}
         <Grid item xs={4}>
           <Box
             id="order-summary"
