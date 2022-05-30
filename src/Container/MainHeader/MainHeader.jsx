@@ -27,7 +27,7 @@ const MainHeader = () => {
         productTabs={PRODUCT_TABS}
         userTabs={USER_TABS}
         handleMenuSelection={handleMenuSelection}
-        cartCount={cartList.lengh}
+        cartCount={cartList.length}
       />
       {Boolean(discountLabelContent) && (
         <DiscountLabel content={discountLabelContent} />
