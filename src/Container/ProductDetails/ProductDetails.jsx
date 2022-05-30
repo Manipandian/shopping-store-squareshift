@@ -21,17 +21,16 @@ const ProductDetails = () => {
   }, [dispatch, productId]);
 
   const addToCartClick = () => {
-    //Needs to implement this logic while doing api integration
-    // cartList.map((cart) => {
-    //     if(cart.id === selectedProductData.id) {
-    //         cart.count = productCount;
-    //     }
-    //     return cart;
-    // });
-    const newCartList = [
-      ...cartList,
-      { ...selectedProductData, count: productCount },
-    ];
+    const newCartList = [...cartList];
+    let checkExistingCart = false;
+    cartList.forEach((cart, index) => {
+      if (cart.id === selectedProductData.id) {
+        checkExistingCart = true;
+        newCartList[index] = { ...selectedProductData, count: productCount };
+      }
+    });
+    !checkExistingCart &&
+      newCartList.push({ ...selectedProductData, count: productCount });
     dispatch(updateCartList(newCartList));
   };
 

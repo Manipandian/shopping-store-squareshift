@@ -22,7 +22,14 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const addToCartClick = (product) => {
-    const newCartList = [...cartList, { ...product, count: 1 }];
+    const newCartList = [...cartList];
+    let checkExistingCart = false;
+    cartList.forEach((cart) => {
+      if (cart.id === product.id) {
+        checkExistingCart = true;
+      }
+    });
+    !checkExistingCart && newCartList.push({ ...product, count: 1 });
     dispatch(updateCartList(newCartList));
   };
 

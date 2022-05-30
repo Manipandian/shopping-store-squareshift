@@ -34,36 +34,39 @@ const Cart = () => {
       </Grid>
       <Grid container spacing={2} justifyContent="space-evenly">
         {cartList.length ? (
-          <Grid item xs={7}>
-            {cartList.map((cart) => {
-              return (
-                <Box
-                  key={cart.id}
-                  id="item-list"
-                  p={2}
-                  sx={{
-                    height: '200px',
-                    width: '100%',
-                  }}
-                >
-                  <CartProductCard product={cart} />
-                </Box>
-              );
-            })}
-          </Grid>
+          <>
+            <Grid item xs={7}>
+              {cartList.map((cart) => {
+                return (
+                  <Box
+                    key={cart.id}
+                    id="item-list"
+                    p={2}
+                    sx={{
+                      height: '200px',
+                      width: '100%',
+                    }}
+                  >
+                    <CartProductCard product={cart} />
+                  </Box>
+                );
+              })}
+            </Grid>
+            <Grid item xs={4}>
+              <Box
+                id="order-summary"
+                p={2}
+                sx={{
+                  height: '200px',
+                  width: '100%',
+                }}
+              >
+                <OrderSummaryCard cartList={cartList} />
+              </Box>
+            </Grid>
+          </>
         ) : null}
-        <Grid item xs={4}>
-          <Box
-            id="order-summary"
-            p={2}
-            sx={{
-              height: '200px',
-              width: '100%',
-            }}
-          >
-            <OrderSummaryCard cartList={cartList} />
-          </Box>
-        </Grid>
+
         <Grid item xs={11}>
           <Box id="checkout-form">
             <CartCheckout />
